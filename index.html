@@ -9,6 +9,7 @@
     <style id="custom-css">
         body { font-family: "Microsoft JhengHei", sans-serif; background: #fef1f5; color: #555; margin: 0; display: flex; height: 100vh; overflow: hidden; }
         
+        /* 側邊欄樣式 */
         #sidebar { 
             width: 220px; 
             background: #fff; 
@@ -18,6 +19,8 @@
             box-sizing: border-box; 
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
+            transition: 0.3s;
         }
         
         #main { 
@@ -32,6 +35,21 @@
 
         .logo { color: #ff85a2; font-size: 22px; font-weight: bold; margin-bottom: 35px; display: block; border-bottom: 2px solid #ffe0e9; padding-bottom: 10px; text-align: center; }
         
+        /* 手機版按鈕：美樂蒂粉色調 */
+        #mobile-toggle {
+            display: none;
+            background: #ffb6c1;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            border-bottom: 2px solid #ffdeea;
+            font-weight: bold;
+        }
+
         nav { flex: 1; }
         nav ul { list-style: none; padding: 0; margin: 0; }
         nav li { 
@@ -43,9 +61,9 @@
             display: flex; 
             align-items: center; 
             justify-content: center;
-            color: #555;
-            position: relative;
+            color: #ff85a2;
             background: #fff;
+            /* 修正格線問題：移除電腦版的多餘邊框，保留形狀 */
             clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
             -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
         }
@@ -55,6 +73,7 @@
             color: white; 
         }
 
+        /* 歌手頁籤 */
         .artist-tabs { 
             display: flex; 
             flex-wrap: nowrap;
@@ -64,7 +83,6 @@
             padding-bottom: 15px; 
             overflow-x: auto;
             white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
         }
         .artist-tabs::-webkit-scrollbar { height: 6px; }
         .artist-tabs::-webkit-scrollbar-thumb { background: #ffdeea; border-radius: 10px; }
@@ -81,54 +99,87 @@
             box-shadow: 0 4px 15px rgba(255, 133, 162, 0.1); 
         }
 
-        .song-table-wrapper::-webkit-scrollbar { width: 8px; }
-        .song-table-wrapper::-webkit-scrollbar-track { background: #fff; }
-        .song-table-wrapper::-webkit-scrollbar-thumb { background: #ffb6c1; border-radius: 10px; }
-
-        .song-table { width: 100%; border-collapse: collapse; }
+        .song-table { width: 100%; border-collapse: collapse; min-width: 300px; }
         .song-table th { background: #ffb6c1; color: white; padding: 15px; text-align: left; position: sticky; top: 0; z-index: 10; }
         .song-table td { padding: 15px; border-bottom: 1px solid #fef1f5; }
         
-        .btn-group { display: flex; gap: 5px; }
-        .copy-btn { background: #ff85a2; color: white; border: none; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 13px; }
-        .del-btn { background: #ffb6c1; color: white; border: none; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 13px; display: none; }
-        .del-btn:hover { background: #ff4d6d; }
+        /* 修正後的按鈕群組樣式 */
+        .btn-group { display: flex; gap: 8px; align-items: center; }
+        .copy-btn, .del-btn { 
+            border: none; 
+            padding: 6px 15px; 
+            border-radius: 20px; 
+            cursor: pointer; 
+            font-size: 13px; 
+            white-space: nowrap; 
+            min-width: 60px; 
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .copy-btn { background: #ff85a2; color: white; }
+        .copy-btn:hover { background: #ff6b8d; }
+        .del-btn { background: #ffb6c1; color: white; display: none; }
+        .del-btn:hover { background: #ffa0b0; }
 
-        .pagination-container { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px; }
+        .pagination-container { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px; padding-bottom: 20px; }
         .page-info { font-size: 14px; color: #ff85a2; font-weight: bold; }
-        .pagination { display: flex; justify-content: center; gap: 8px; }
+        .pagination { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
         .page-btn { padding: 8px 15px; background: white; border: 1px solid #ffb6c1; border-radius: 8px; cursor: pointer; color: #ff85a2; transition: 0.3s; }
         .page-btn:hover, .page-btn.active { background: #ffb6c1; color: white; }
-        .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
         #edit-panel { 
             display: none; position: fixed; top: 0; right: 0; width: 420px; height: 100%; 
             background: rgba(255, 245, 247, 0.98); backdrop-filter: blur(10px); color: #8a6d75; 
             padding: 25px; box-sizing: border-box; z-index: 1000; border-left: 2px solid #ffdeea; overflow-y: auto;
         }
+
+        @media screen and (max-width: 768px) {
+            body { flex-direction: column; height: auto; overflow: auto; }
+            #mobile-toggle { display: block; }
+            #sidebar { 
+                width: 100%; 
+                height: 0; 
+                padding: 0 15px;
+                overflow: hidden; 
+                border-right: none;
+                background: #fffafb; 
+                border-bottom: 2px solid #ffdeea;
+                position: relative;
+            }
+            #sidebar.open { height: auto; padding: 20px 15px; }
+            .logo { display: none; }
+            #main { padding: 20px 15px; height: auto; overflow: visible; }
+            .song-table th, .song-table td { padding: 10px 8px; font-size: 14px; }
+            .song-table-wrapper { overflow-x: auto; }
+            #edit-panel { width: 100%; }
+            nav li { padding: 12px 10px; margin-bottom: 8px; }
+        }
+
         .edit-section { background: white; padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #ffecf1; }
         .edit-section h3 { margin-top: 0; color: #ff85a2; font-size: 16px; border-bottom: 1px dashed #ffc0d0; padding-bottom: 5px; }
         input[type="text"], textarea, select { width: 100%; background: #fff; border: 2px solid #ffdeea; padding: 10px; border-radius: 10px; margin-bottom: 10px; box-sizing: border-box; }
-        textarea { height: 150px; font-family: 'Consolas', monospace; font-size: 11px; }
         .save-btn { background: linear-gradient(135deg, #ff9aa2 0%, #ffb6c1 100%); color: white; border: none; padding: 15px; width: 100%; border-radius: 30px; cursor: pointer; font-weight: bold; }
         .close-btn { background: #eee; color: #777; border: none; padding: 5px 15px; border-radius: 10px; cursor: pointer; float: right; font-size: 12px; }
     </style>
 </head>
 <body>
 
+<button id="mobile-toggle" onclick="toggleSidebar()">🍡 點我切換歌單類別 🍡</button>
+
 <div id="sidebar">
     <span class="logo">Ribi♡Music</span>
     <nav>
         <ul id="menu">
             <li onclick="changeCategory('jp', this)">日文歌專區</li>
-            <li onclick="changeCategory('cn', this)" class="">中文歌專區</li>
-            <li onclick="changeCategory('tw', this)" class="active">台語歌專區</li> <li onclick="changeCategory('practice', this)">🎤 練歌清單</li>
+            <li onclick="changeCategory('cn', this)" class="active">中文歌專區</li>
+            <li onclick="changeCategory('tw', this)">台語歌專區</li> 
+            <li onclick="changeCategory('practice', this)">🎤 練歌清單</li>
         </ul>
     </nav>
 </div>
 
 <div id="main">
-    <h1 id="category-title">台語歌專區</h1>
+    <h1 id="category-title" style="font-size: 24px; color: #ff85a2; margin-top: 0;">中文歌專區</h1>
     <div class="artist-tabs" id="artist-tabs"></div>
     <div class="song-table-wrapper">
         <table class="song-table">
@@ -136,7 +187,7 @@
                 <tr>
                     <th>歌曲名稱</th>
                     <th>演唱 / 來源</th>
-                    <th style="width: 140px;">功能</th>
+                    <th style="width: 80px;">功能</th>
                 </tr>
             </thead>
             <tbody id="song-list-body"></tbody>
@@ -197,7 +248,7 @@
         { "name": "だんご大家族", "artist": "茶太", "lang": "jp" },
         { "name": "バラライカ", "artist": "久住小春", "lang": "jp" },
         { "name": "secret base 君がくれたもの", "artist": "未聞花名ED", "lang": "jp" },
-        { "name": "旦那様とのラブラブ・ラブソング", "artist": "釘宮理惠", "lang": "practice" },
+        { "name": "劇終", "artist": "潘嘉麗", "lang": "cn" },
         { "name": "熬夜上癮", "artist": "劉奕心", "lang": "cn" },
         { "name": "暖暖", "artist": "梁靜茹", "lang": "cn" },
         { "name": "小手拉大手", "artist": "梁靜茹", "lang": "cn" },
@@ -257,10 +308,14 @@
             document.getElementById('edit-panel').style.display = 'block';
             isEditMode = true; 
         }
-        
         const savedData = localStorage.getItem('ribii_songs');
         if (savedData) { songs = JSON.parse(savedData); }
         render();
+    }
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('open');
     }
 
     function changeCategory(cat, el) {
@@ -268,6 +323,7 @@
         document.querySelectorAll('#menu li').forEach(li => li.classList.remove('active'));
         el.classList.add('active');
         document.getElementById('category-title').innerText = el.innerText;
+        if (window.innerWidth <= 768) { document.getElementById('sidebar').classList.remove('open'); }
         render();
     }
 
@@ -277,7 +333,6 @@
         let langSongs = songs.filter(s => s.lang === currentCategory);
         const artistCounts = {};
         langSongs.forEach(s => { artistCounts[s.artist] = (artistCounts[s.artist] || 0) + 1; });
-
         let sortedArtists = Object.keys(artistCounts).sort((a, b) => artistCounts[b] - artistCounts[a]);
 
         const tabContainer = document.getElementById('artist-tabs');
@@ -286,7 +341,6 @@
         tabContainer.innerHTML = tabsHTML;
 
         let filteredData = (currentArtist === 'ALL') ? langSongs : langSongs.filter(s => s.artist === currentArtist);
-        
         const totalSongs = filteredData.length;
         const totalPages = Math.ceil(totalSongs / songsPerPage);
         const startIndex = (currentPage - 1) * songsPerPage;
@@ -316,7 +370,6 @@
             pagHTML += `<button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})">»</button>`;
             pagination.innerHTML = pagHTML;
         } else { pagination.innerHTML = ''; }
-        
         updateEditUI();
     }
 
@@ -327,7 +380,6 @@
         const artist = document.getElementById('new-song-artist').value;
         const lang = document.getElementById('new-song-lang').value;
         if (!name || !artist) return alert("要填寫內容喔！");
-        
         songs.push({ name, artist, lang });
         document.getElementById('new-song-name').value = "";
         document.getElementById('new-song-artist').value = "";
@@ -352,8 +404,7 @@
     function updateEditUI() {
         const songRegex = /let songs = \[[\s\S]*?\];/;
         const newSongCode = `let songs = ${JSON.stringify(songs, null, 8)};`;
-        let cleanHTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML
-            .replace(songRegex, newSongCode);
+        let cleanHTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML.replace(songRegex, newSongCode);
         document.getElementById('full-code-editor').value = cleanHTML;
     }
 
