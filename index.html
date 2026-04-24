@@ -9,7 +9,6 @@
     <style id="custom-css">
         body { font-family: "Microsoft JhengHei", sans-serif; background: #fef1f5; color: #555; margin: 0; display: flex; height: 100vh; overflow: hidden; }
         
-        /* 側邊欄樣式 */
         #sidebar { 
             width: 220px; 
             background: #fff; 
@@ -35,7 +34,6 @@
 
         .logo { color: #ff85a2; font-size: 22px; font-weight: bold; margin-bottom: 35px; display: block; border-bottom: 2px solid #ffe0e9; padding-bottom: 10px; text-align: center; }
         
-        /* 手機版按鈕：美樂蒂粉色調 */
         #mobile-toggle {
             display: none;
             background: #ffb6c1;
@@ -63,7 +61,6 @@
             justify-content: center;
             color: #ff85a2;
             background: #fff;
-            /* 修正格線問題：移除電腦版的多餘邊框，保留形狀 */
             clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
             -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
         }
@@ -73,7 +70,6 @@
             color: white; 
         }
 
-        /* 歌手頁籤 */
         .artist-tabs { 
             display: flex; 
             flex-wrap: nowrap;
@@ -103,7 +99,6 @@
         .song-table th { background: #ffb6c1; color: white; padding: 15px; text-align: left; position: sticky; top: 0; z-index: 10; }
         .song-table td { padding: 15px; border-bottom: 1px solid #fef1f5; }
         
-        /* 修正後的按鈕群組樣式 */
         .btn-group { display: flex; gap: 8px; align-items: center; }
         .copy-btn, .del-btn { 
             border: none; 
@@ -170,8 +165,8 @@
     <span class="logo">Ribi♡Music</span>
     <nav>
         <ul id="menu">
-            <li onclick="changeCategory('jp', this)" class="">日文歌專區</li>
-            <li onclick="changeCategory('cn', this)" class="active">中文歌專區</li>
+            <li onclick="changeCategory('jp', this)" class="active">日文歌專區</li>
+            <li onclick="changeCategory('cn', this)">中文歌專區</li>
             <li onclick="changeCategory('tw', this)">台語歌專區</li> 
             <li onclick="changeCategory('practice', this)">🎤 練歌清單</li>
         </ul>
@@ -179,8 +174,8 @@
 </div>
 
 <div id="main">
-    <h1 id="category-title" style="font-size: 24px; color: #ff85a2; margin-top: 0;">中文歌專區</h1>
-    <div class="artist-tabs" id="artist-tabs"><div class="tab active" onclick="setArtist('ALL')">全部 <span class="tab-count">(20)</span></div><div class="tab " onclick="setArtist('真珠美人魚')">真珠美人魚 <span class="tab-count">(6)</span></div><div class="tab " onclick="setArtist('梁靜茹')">梁靜茹 <span class="tab-count">(2)</span></div><div class="tab " onclick="setArtist('王心凌')">王心凌 <span class="tab-count">(2)</span></div><div class="tab " onclick="setArtist('田馥甄')">田馥甄 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('劉奕心')">劉奕心 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('張韶涵')">張韶涵 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('郁可唯')">郁可唯 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('金莎')">金莎 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('容祖兒')">容祖兒 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('四葉草')">四葉草 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('王俊琪')">王俊琪 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('小潘潘&amp;小峰峰')">小潘潘&amp;小峰峰 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('鄧麗君')">鄧麗君 <span class="tab-count">(1)</span></div></div>
+    <h1 id="category-title" style="font-size: 24px; color: #ff85a2; margin-top: 0;">日文歌專區</h1>
+    <div class="artist-tabs" id="artist-tabs"><div class="tab active" onclick="setArtist('ALL')">全部 <span class="tab-count">(43)</span></div><div class="tab " onclick="setArtist('μ`s')">μ`s <span class="tab-count">(9)</span></div><div class="tab " onclick="setArtist('テレサ・テン')">テレサ・テン <span class="tab-count">(5)</span></div><div class="tab " onclick="setArtist('HoneyWorks')">HoneyWorks <span class="tab-count">(2)</span></div><div class="tab " onclick="setArtist('riya')">riya <span class="tab-count">(2)</span></div><div class="tab " onclick="setArtist('久住小春')">久住小春 <span class="tab-count">(2)</span></div><div class="tab " onclick="setArtist('Changin` My Life')">Changin` My Life <span class="tab-count">(2)</span></div><div class="tab " onclick="setArtist('DALI')">DALI <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('ano')">ano <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('とらドラ! ED')">とらドラ! ED <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('AKB48')">AKB48 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('K-ON！')">K-ON！ <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('絆愛 キズナアイ')">絆愛 キズナアイ <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('辻亞彌乃')">辻亞彌乃 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('木村弓')">木村弓 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('やなぎなぎ')">やなぎなぎ <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('茶太')">茶太 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('未聞花名ED')">未聞花名ED <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('AiScReam')">AiScReam <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('松浦亜弥')">松浦亜弥 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('佐咲紗花')">佐咲紗花 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('グミ')">グミ <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('Buono!')">Buono! <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('鈴木宏子')">鈴木宏子 <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('ゆこぴ (feat.歌愛ユキ)')">ゆこぴ (feat.歌愛ユキ) <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('no3b(惡魔奶爸ED1)')">no3b(惡魔奶爸ED1) <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('PiKi')">PiKi <span class="tab-count">(1)</span></div><div class="tab " onclick="setArtist('平野綾')">平野綾 <span class="tab-count">(1)</span></div></div>
     <div class="song-table-wrapper">
         <table class="song-table">
             <thead>
@@ -191,105 +186,105 @@
                 </tr>
             </thead>
             <tbody id="song-list-body"><tr>
-                <td>小幸運</td>
-                <td>田馥甄</td>
+                <td>ムーンライト伝説</td>
+                <td>DALI</td>
                 <td>
                     <div class="btn-group">
-                        <button class="copy-btn" onclick="copy('小幸運')">複製</button>
-                        <button class="del-btn" style="display: block" onclick="deleteSong(2)">刪除</button>
+                        <button class="copy-btn" onclick="copy('ムーンライト伝説')">複製</button>
+                        <button class="del-btn" style="display: block" onclick="deleteSong(0)">刪除</button>
                     </div>
                 </td>
             </tr><tr>
-                <td>熬夜上癮</td>
-                <td>劉奕心</td>
+                <td>可愛くてごめん</td>
+                <td>HoneyWorks</td>
                 <td>
                     <div class="btn-group">
-                        <button class="copy-btn" onclick="copy('熬夜上癮')">複製</button>
-                        <button class="del-btn" style="display: block" onclick="deleteSong(26)">刪除</button>
+                        <button class="copy-btn" onclick="copy('可愛くてごめん')">複製</button>
+                        <button class="del-btn" style="display: block" onclick="deleteSong(1)">刪除</button>
                     </div>
                 </td>
             </tr><tr>
-                <td>暖暖</td>
-                <td>梁靜茹</td>
+                <td>ハッピーラッキーチャッピー</td>
+                <td>ano</td>
                 <td>
                     <div class="btn-group">
-                        <button class="copy-btn" onclick="copy('暖暖')">複製</button>
-                        <button class="del-btn" style="display: block" onclick="deleteSong(27)">刪除</button>
+                        <button class="copy-btn" onclick="copy('ハッピーラッキーチャッピー')">複製</button>
+                        <button class="del-btn" style="display: block" onclick="deleteSong(3)">刪除</button>
                     </div>
                 </td>
             </tr><tr>
-                <td>小手拉大手</td>
-                <td>梁靜茹</td>
+                <td>オレンジ</td>
+                <td>とらドラ! ED</td>
                 <td>
                     <div class="btn-group">
-                        <button class="copy-btn" onclick="copy('小手拉大手')">複製</button>
-                        <button class="del-btn" style="display: block" onclick="deleteSong(28)">刪除</button>
+                        <button class="copy-btn" onclick="copy('オレンジ')">複製</button>
+                        <button class="del-btn" style="display: block" onclick="deleteSong(4)">刪除</button>
                     </div>
                 </td>
             </tr><tr>
-                <td>隱形的翅膀</td>
-                <td>張韶涵</td>
+                <td>Snow Halation</td>
+                <td>μ`s</td>
                 <td>
                     <div class="btn-group">
-                        <button class="copy-btn" onclick="copy('隱形的翅膀')">複製</button>
-                        <button class="del-btn" style="display: block" onclick="deleteSong(29)">刪除</button>
+                        <button class="copy-btn" onclick="copy('Snow Halation')">複製</button>
+                        <button class="del-btn" style="display: block" onclick="deleteSong(5)">刪除</button>
                     </div>
                 </td>
             </tr><tr>
-                <td>暖心</td>
-                <td>郁可唯</td>
+                <td>もぎゅっと“love”で接近中!</td>
+                <td>μ`s</td>
                 <td>
                     <div class="btn-group">
-                        <button class="copy-btn" onclick="copy('暖心')">複製</button>
-                        <button class="del-btn" style="display: block" onclick="deleteSong(30)">刪除</button>
+                        <button class="copy-btn" onclick="copy('もぎゅっと“love”で接近中!')">複製</button>
+                        <button class="del-btn" style="display: block" onclick="deleteSong(6)">刪除</button>
                     </div>
                 </td>
             </tr><tr>
-                <td>愛的魔法</td>
-                <td>金莎</td>
+                <td>START:DASH!!</td>
+                <td>μ`s</td>
                 <td>
                     <div class="btn-group">
-                        <button class="copy-btn" onclick="copy('愛的魔法')">複製</button>
-                        <button class="del-btn" style="display: block" onclick="deleteSong(31)">刪除</button>
+                        <button class="copy-btn" onclick="copy('START:DASH!!')">複製</button>
+                        <button class="del-btn" style="display: block" onclick="deleteSong(7)">刪除</button>
                     </div>
                 </td>
             </tr><tr>
-                <td>揮著翅膀的女孩</td>
-                <td>容祖兒</td>
+                <td>僕らのLIVE 君とのLIFE</td>
+                <td>μ`s</td>
                 <td>
                     <div class="btn-group">
-                        <button class="copy-btn" onclick="copy('揮著翅膀的女孩')">複製</button>
-                        <button class="del-btn" style="display: block" onclick="deleteSong(32)">刪除</button>
+                        <button class="copy-btn" onclick="copy('僕らのLIVE 君とのLIFE')">複製</button>
+                        <button class="del-btn" style="display: block" onclick="deleteSong(8)">刪除</button>
                     </div>
                 </td>
             </tr><tr>
-                <td>好想你</td>
-                <td>四葉草</td>
+                <td>愛してるばんざーい!</td>
+                <td>μ`s</td>
                 <td>
                     <div class="btn-group">
-                        <button class="copy-btn" onclick="copy('好想你')">複製</button>
-                        <button class="del-btn" style="display: block" onclick="deleteSong(33)">刪除</button>
+                        <button class="copy-btn" onclick="copy('愛してるばんざーい!')">複製</button>
+                        <button class="del-btn" style="display: block" onclick="deleteSong(9)">刪除</button>
                     </div>
                 </td>
             </tr><tr>
-                <td>當你</td>
-                <td>王心凌</td>
+                <td>まほうつかいはじめました!</td>
+                <td>μ`s</td>
                 <td>
                     <div class="btn-group">
-                        <button class="copy-btn" onclick="copy('當你')">複製</button>
-                        <button class="del-btn" style="display: block" onclick="deleteSong(34)">刪除</button>
+                        <button class="copy-btn" onclick="copy('まほうつかいはじめました!')">複製</button>
+                        <button class="del-btn" style="display: block" onclick="deleteSong(10)">刪除</button>
                     </div>
                 </td>
             </tr></tbody>
         </table>
     </div>
     <div class="pagination-container">
-        <div class="page-info" id="page-info">第 1 / 2 頁 (共 20 首歌)</div>
-        <div class="pagination" id="pagination"><button class="page-btn" disabled="" onclick="changePage(0)">«</button><button class="page-btn active" onclick="changePage(1)">1</button><button class="page-btn " onclick="changePage(2)">2</button><button class="page-btn" onclick="changePage(2)">»</button></div>
+        <div class="page-info" id="page-info">第 1 / 5 頁 (共 43 首歌)</div>
+        <div class="pagination" id="pagination"><button class="page-btn" disabled="" onclick="changePage(0)">«</button><button class="page-btn active" onclick="changePage(1)">1</button><button class="page-btn " onclick="changePage(2)">2</button><button class="page-btn " onclick="changePage(3)">3</button><button class="page-btn " onclick="changePage(4)">4</button><button class="page-btn " onclick="changePage(5)">5</button><button class="page-btn" onclick="changePage(2)">»</button></div>
     </div>
 </div>
 
-<div id="edit-panel" style="display: block;">
+<div id="edit-panel" style="display: none;">
     <button class="close-btn" onclick="document.getElementById('edit-panel').style.display='none'">❌ 關閉後台</button>
     <h2 style="color: #ff85a2;">魔法管理後台</h2>
     <div class="edit-section">
@@ -299,7 +294,8 @@
         <select id="new-song-lang">
             <option value="jp">日文歌</option>
             <option value="cn">中文歌</option>
-            <option value="tw">台語歌</option> <option value="practice">🎤 練歌清單</option>
+            <option value="tw">台語歌</option> 
+            <option value="practice">🎤 練歌清單</option>
         </select>
         <button class="save-btn" style="padding: 10px;" onclick="addNewSong()">✨ 加入並儲存</button>
     </div>
@@ -313,362 +309,78 @@
 
 <script>
     let songs = [
-        {
-                "name": "ムーンライト伝説",
-                "artist": "DALI",
-                "lang": "jp"
-        },
-        {
-                "name": "可愛くてごめん",
-                "artist": "HoneyWorks",
-                "lang": "jp"
-        },
-        {
-                "name": "小幸運",
-                "artist": "田馥甄",
-                "lang": "cn"
-        },
-        {
-                "name": "ハッピーラッキーチャッピー",
-                "artist": "ano",
-                "lang": "jp"
-        },
-        {
-                "name": "オレンジ",
-                "artist": "とらドラ! ED",
-                "lang": "jp"
-        },
-        {
-                "name": "Snow Halation",
-                "artist": "μ`s",
-                "lang": "jp"
-        },
-        {
-                "name": "もぎゅっと“love”で接近中!",
-                "artist": "μ`s",
-                "lang": "jp"
-        },
-        {
-                "name": "START:DASH!!",
-                "artist": "μ`s",
-                "lang": "jp"
-        },
-        {
-                "name": "僕らのLIVE 君とのLIFE",
-                "artist": "μ`s",
-                "lang": "jp"
-        },
-        {
-                "name": "愛してるばんざーい!",
-                "artist": "μ`s",
-                "lang": "jp"
-        },
-        {
-                "name": "まほうつかいはじめました!",
-                "artist": "μ`s",
-                "lang": "jp"
-        },
-        {
-                "name": "僕たちはひとつの光",
-                "artist": "μ`s",
-                "lang": "jp"
-        },
-        {
-                "name": "夏色えがおで1,2,Jump",
-                "artist": "μ`s",
-                "lang": "jp"
-        },
-        {
-                "name": "ヘビーローテーション",
-                "artist": "AKB48",
-                "lang": "jp"
-        },
-        {
-                "name": "天使にふれたよ！",
-                "artist": "K-ON！",
-                "lang": "jp"
-        },
-        {
-                "name": "AI AI AI",
-                "artist": "絆愛 キズナアイ",
-                "lang": "jp"
-        },
-        {
-                "name": "風になる",
-                "artist": "辻亞彌乃",
-                "lang": "jp"
-        },
-        {
-                "name": "いのちの名前",
-                "artist": "木村弓",
-                "lang": "jp"
-        },
-        {
-                "name": "Music S.T.A.R.T!!",
-                "artist": "μ`s",
-                "lang": "jp"
-        },
-        {
-                "name": "春擬き",
-                "artist": "やなぎなぎ",
-                "lang": "jp"
-        },
-        {
-                "name": "メグメル",
-                "artist": "riya",
-                "lang": "jp"
-        },
-        {
-                "name": "小さなてのひら",
-                "artist": "riya",
-                "lang": "jp"
-        },
-        {
-                "name": "だんご大家族",
-                "artist": "茶太",
-                "lang": "jp"
-        },
-        {
-                "name": "バラライカ",
-                "artist": "久住小春",
-                "lang": "jp"
-        },
-        {
-                "name": "secret base 君がくれたもの",
-                "artist": "未聞花名ED",
-                "lang": "jp"
-        },
-        {
-                "name": "旦那様とのラブラブ・ラブソング",
-                "artist": "釘宮理惠",
-                "lang": "practice"
-        },
-        {
-                "name": "熬夜上癮",
-                "artist": "劉奕心",
-                "lang": "cn"
-        },
-        {
-                "name": "暖暖",
-                "artist": "梁靜茹",
-                "lang": "cn"
-        },
-        {
-                "name": "小手拉大手",
-                "artist": "梁靜茹",
-                "lang": "cn"
-        },
-        {
-                "name": "隱形的翅膀",
-                "artist": "張韶涵",
-                "lang": "cn"
-        },
-        {
-                "name": "暖心",
-                "artist": "郁可唯",
-                "lang": "cn"
-        },
-        {
-                "name": "愛的魔法",
-                "artist": "金莎",
-                "lang": "cn"
-        },
-        {
-                "name": "揮著翅膀的女孩",
-                "artist": "容祖兒",
-                "lang": "cn"
-        },
-        {
-                "name": "好想你",
-                "artist": "四葉草",
-                "lang": "cn"
-        },
-        {
-                "name": "當你",
-                "artist": "王心凌",
-                "lang": "cn"
-        },
-        {
-                "name": "愛你",
-                "artist": "王心凌",
-                "lang": "cn"
-        },
-        {
-                "name": "我多喜歡你 你會知道",
-                "artist": "王俊琪",
-                "lang": "cn"
-        },
-        {
-                "name": "學貓叫",
-                "artist": "小潘潘&小峰峰",
-                "lang": "cn"
-        },
-        {
-                "name": "我只在乎你",
-                "artist": "鄧麗君",
-                "lang": "cn"
-        },
-        {
-                "name": "時の流れに身をまかせ",
-                "artist": "テレサ・テン",
-                "lang": "jp"
-        },
-        {
-                "name": "つぐない",
-                "artist": "テレサ・テン",
-                "lang": "jp"
-        },
-        {
-                "name": "愛人",
-                "artist": "テレサ・テン",
-                "lang": "jp"
-        },
-        {
-                "name": "空港",
-                "artist": "テレサ・テン",
-                "lang": "jp"
-        },
-        {
-                "name": "何日君再來",
-                "artist": "テレサ・テン",
-                "lang": "jp"
-        },
-        {
-                "name": "愛♡スクリ～ム！",
-                "artist": "AiScReam",
-                "lang": "jp"
-        },
-        {
-                "name": "ツインテール魔法少女",
-                "artist": "HoneyWorks",
-                "lang": "jp"
-        },
-        {
-                "name": "桃色片想い",
-                "artist": "松浦亜弥",
-                "lang": "jp"
-        },
-        {
-                "name": "Zzz(ズズズ)",
-                "artist": "佐咲紗花",
-                "lang": "jp"
-        },
-        {
-                "name": "Catch You Catch Me",
-                "artist": "グミ",
-                "lang": "jp"
-        },
-        {
-                "name": "ホントのじぶん",
-                "artist": "Buono!",
-                "lang": "jp"
-        },
-        {
-                "name": "ハッピー☆彡",
-                "artist": "久住小春",
-                "lang": "jp"
-        },
-        {
-                "name": "薔薇は美しく散る",
-                "artist": "鈴木宏子",
-                "lang": "jp"
-        },
-        {
-                "name": "強風オールバック",
-                "artist": "ゆこぴ (feat.歌愛ユキ)",
-                "lang": "jp"
-        },
-        {
-                "name": "Answer",
-                "artist": "no3b(惡魔奶爸ED1)",
-                "lang": "jp"
-        },
-        {
-                "name": "Legend of Mermaid / 七彩的微風",
-                "artist": "真珠美人魚",
-                "lang": "cn"
-        },
-        {
-                "name": "全世界最早的早晨出現的地方",
-                "artist": "真珠美人魚",
-                "lang": "cn"
-        },
-        {
-                "name": "幸福的女孩",
-                "artist": "真珠美人魚",
-                "lang": "cn"
-        },
-        {
-                "name": "愛的百寶箱",
-                "artist": "真珠美人魚",
-                "lang": "cn"
-        },
-        {
-                "name": "相信自己",
-                "artist": "真珠美人魚",
-                "lang": "cn"
-        },
-        {
-                "name": "鼓動 / KODOU",
-                "artist": "真珠美人魚",
-                "lang": "cn"
-        },
-        {
-                "name": "天公疼憨人",
-                "artist": "曾心梅",
-                "lang": "tw"
-        },
-        {
-                "name": "愛情的騙子我問你",
-                "artist": "陳小雲",
-                "lang": "tw"
-        },
-        {
-                "name": "心花開",
-                "artist": "李千娜",
-                "lang": "tw"
-        },
-        {
-                "name": "幸福之戀",
-                "artist": "龍千玉",
-                "lang": "tw"
-        },
-        {
-                "name": "魚夢",
-                "artist": "郭忠佑",
-                "lang": "tw"
-        },
-        {
-                "name": "棉照被",
-                "artist": "許富凱",
-                "lang": "tw"
-        },
-        {
-                "name": "kawaii kaiwai",
-                "artist": "PiKi",
-                "lang": "jp"
-        },
-        {
-                "name": "God knows...",
-                "artist": "平野綾",
-                "lang": "jp"
-        },
-        {
-                "name": "Myself",
-                "artist": "Changin` My Life",
-                "lang": "jp"
-        },
-        {
-                "name": "SMILE",
-                "artist": "Changin` My Life",
-                "lang": "jp"
-        },
-        {
-                "name": "ETERNAL SNOW",
-                "artist": "Changin` My Life",
-                "lang": "practice"
-        }
-];
+        {"name":"ムーンライト伝説","artist":"DALI","lang":"jp"},
+        {"name":"可愛くてごめん","artist":"HoneyWorks","lang":"jp"},
+        {"name":"小幸運","artist":"田馥甄","lang":"cn"},
+        {"name":"ハッピーラッキーチャッピー","artist":"ano","lang":"jp"},
+        {"name":"オレンジ","artist":"とらドラ! ED","lang":"jp"},
+        {"name":"Snow Halation","artist":"μ`s","lang":"jp"},
+        {"name":"もぎゅっと“love”で接近中!","artist":"μ`s","lang":"jp"},
+        {"name":"START:DASH!!","artist":"μ`s","lang":"jp"},
+        {"name":"僕らのLIVE 君とのLIFE","artist":"μ`s","lang":"jp"},
+        {"name":"愛してるばんざーい!","artist":"μ`s","lang":"jp"},
+        {"name":"まほうつかいはじめました!","artist":"μ`s","lang":"jp"},
+        {"name":"僕たちはひとつの光","artist":"μ`s","lang":"jp"},
+        {"name":"夏色えがおで1,2,Jump","artist":"μ`s","lang":"jp"},
+        {"name":"ヘビーローテーション","artist":"AKB48","lang":"jp"},
+        {"name":"天使にふれたよ！","artist":"K-ON！","lang":"jp"},
+        {"name":"AI AI AI","artist":"絆愛 キズナアイ","lang":"jp"},
+        {"name":"風になる","artist":"辻亞彌乃","lang":"jp"},
+        {"name":"いのちの名前","artist":"木村弓","lang":"jp"},
+        {"name":"Music S.T.A.R.T!!","artist":"μ`s","lang":"jp"},
+        {"name":"春擬き","artist":"やなぎなぎ","lang":"jp"},
+        {"name":"メグメル","artist":"riya","lang":"jp"},
+        {"name":"小さなてのひら","artist":"riya","lang":"jp"},
+        {"name":"だんご大家族","artist":"茶太","lang":"jp"},
+        {"name":"バラライカ","artist":"久住小春","lang":"jp"},
+        {"name":"secret base 君がくれたもの","artist":"未聞花名ED","lang":"jp"},
+        {"name":"旦那様とのラブラブ・ラブソング","artist":"釘宮理惠","lang":"practice"},
+        {"name":"熬夜上癮","artist":"劉奕心","lang":"cn"},
+        {"name":"暖暖","artist":"梁靜茹","lang":"cn"},
+        {"name":"小手拉大手","artist":"梁靜茹","lang":"cn"},
+        {"name":"隱形的翅膀","artist":"張韶涵","lang":"cn"},
+        {"name":"暖心","artist":"郁可唯","lang":"cn"},
+        {"name":"愛的魔法","artist":"金莎","lang":"cn"},
+        {"name":"揮著翅膀的女孩","artist":"容祖兒","lang":"cn"},
+        {"name":"好想你","artist":"四葉草","lang":"cn"},
+        {"name":"當你","artist":"王心凌","lang":"cn"},
+        {"name":"愛你","artist":"王心凌","lang":"cn"},
+        {"name":"我多喜歡你 你會知道","artist":"王俊琪","lang":"cn"},
+        {"name":"學貓叫","artist":"小潘潘&小峰峰","lang":"cn"},
+        {"name":"我只在乎你","artist":"鄧麗君","lang":"cn"},
+        {"name":"時の流れに身をまかせ","artist":"テレサ・テン","lang":"jp"},
+        {"name":"つぐない","artist":"テレサ・テン","lang":"jp"},
+        {"name":"愛人","artist":"テレサ・テン","lang":"jp"},
+        {"name":"空港","artist":"テレサ・テン","lang":"jp"},
+        {"name":"何日君再來","artist":"テレサ・テン","lang":"jp"},
+        {"name":"愛♡スクリ～ム！","artist":"AiScReam","lang":"jp"},
+        {"name":"ツインテール魔法少女","artist":"HoneyWorks","lang":"jp"},
+        {"name":"桃色片想い","artist":"松浦亜弥","lang":"jp"},
+        {"name":"Zzz(ズズズ)","artist":"佐咲紗花","lang":"jp"},
+        {"name":"Catch You Catch Me","artist":"グミ","lang":"jp"},
+        {"name":"ホントのじぶん","artist":"Buono!","lang":"jp"},
+        {"name":"ハッピー☆彡","artist":"久住小春","lang":"jp"},
+        {"name":"薔薇は美しく散る","artist":"鈴木宏子","lang":"jp"},
+        {"name":"強風オールバック","artist":"ゆこぴ (feat.歌愛ユキ)","lang":"jp"},
+        {"name":"Answer","artist":"no3b(惡魔奶爸ED1)","lang":"jp"},
+        {"name":"Legend of Mermaid / 七彩的微風","artist":"真珠美人魚","lang":"cn"},
+        {"name":"全世界最早的早晨出現的地方","artist":"真珠美人魚","lang":"cn"},
+        {"name":"幸福的女孩","artist":"真珠美人魚","lang":"cn"},
+        {"name":"愛的百寶箱","artist":"真珠美人魚","lang":"cn"},
+        {"name":"相信自己","artist":"真珠美人魚","lang":"cn"},
+        {"name":"鼓動 / KODOU","artist":"真珠美人魚","lang":"cn"},
+        {"name":"天公疼憨人","artist":"曾心梅","lang":"tw"},
+        {"name":"愛情的騙子我問你","artist":"陳小雲","lang":"tw"},
+        {"name":"心花開","artist":"李千娜","lang":"tw"},
+        {"name":"幸福之戀","artist":"龍千玉","lang":"tw"},
+        {"name":"魚夢","artist":"郭忠佑","lang":"tw"},
+        {"name":"棉照被","artist":"許富凱","lang":"tw"},
+        {"name":"kawaii kaiwai","artist":"PiKi","lang":"jp"},
+        {"name":"God knows...","artist":"平野綾","lang":"jp"},
+        {"name":"Myself","artist":"Changin` My Life","lang":"jp"},
+        {"name":"SMILE","artist":"Changin` My Life","lang":"jp"},
+        {"name":"ETERNAL SNOW","artist":"Changin` My Life","lang":"practice"}
+    ];
 
     let currentCategory = 'jp';
     let currentArtist = 'ALL';
@@ -744,7 +456,8 @@
             pagHTML += `<button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})">»</button>`;
             pagination.innerHTML = pagHTML;
         } else { pagination.innerHTML = ''; }
-        updateEditUI();
+        
+        // 渲染完不主動更新 Editor，避免效能問題，改為複製時觸發
     }
 
     function changePage(p) { currentPage = p; render(); }
@@ -772,21 +485,37 @@
     function saveToBrowser(show = true) {
         localStorage.setItem('ribii_songs', JSON.stringify(songs));
         if (show) alert('✨ 儲存成功！');
-        updateEditUI();
     }
 
-    function updateEditUI() {
+    function generateCleanHTML() {
         const songRegex = /let songs = \[[\s\S]*?\];/;
-        const newSongCode = `let songs = ${JSON.stringify(songs, null, 8)};`;
-        let cleanHTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML.replace(songRegex, newSongCode);
-        document.getElementById('full-code-editor').value = cleanHTML;
+        const formattedSongs = songs.map(s => `        ${JSON.stringify(s)}`).join(',\n');
+        const newSongCode = `let songs = [\n${formattedSongs}\n    ];`;
+        
+        // 先暫存目前面板狀態
+        const panel = document.getElementById('edit-panel');
+        const originalDisplay = panel.style.display;
+        
+        // 強制隱藏面板後再抓取 HTML，確保複製出的代碼「初始狀態」是關閉的
+        panel.style.display = 'none';
+        
+        let fullDoc = document.documentElement.outerHTML;
+        
+        // 還原面板狀態
+        panel.style.display = originalDisplay;
+
+        // 替換代碼並清理
+        let cleanHTML = "<!DOCTYPE html>\n" + fullDoc.replace(songRegex, newSongCode);
+        return cleanHTML;
     }
 
     function copyFullHTML() {
-        updateEditUI();
-        document.getElementById('full-code-editor').select();
+        const cleanCode = generateCleanHTML();
+        const editor = document.getElementById('full-code-editor');
+        editor.value = cleanCode;
+        editor.select();
         document.execCommand('copy');
-        alert('✨ 代碼已複製！請貼回 index.html 覆蓋存檔。');
+        alert('✨ 代碼已複製！請貼回 index.html 覆蓋存檔。\n\n⚠️ 這次修正了隱藏面板的 Bug，以後複製出來的檔案預設都會關閉後台喔！');
     }
 
     function copy(t) { navigator.clipboard.writeText(t); alert('已複製：' + t); }
