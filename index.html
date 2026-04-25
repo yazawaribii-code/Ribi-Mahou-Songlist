@@ -128,6 +128,32 @@
             padding: 25px; box-sizing: border-box; z-index: 1000; border-left: 2px solid #ffdeea; overflow-y: auto;
         }
 
+        /* ✨ 新增的粉色提示框樣式 */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff85a2;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 133, 162, 0.4);
+            z-index: 9999;
+            animation: fadeInOut 2s ease forwards;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translate(-50%, -20px); }
+            15% { opacity: 1; transform: translate(-50%, 0); }
+            85% { opacity: 1; transform: translate(-50%, 0); }
+            100% { opacity: 0; transform: translate(-50%, -10px); }
+        }
+
         @media screen and (max-width: 768px) {
             body { flex-direction: column; height: auto; overflow: auto; }
             #mobile-toggle { display: block; }
@@ -156,7 +182,7 @@
         .save-btn { background: linear-gradient(135deg, #ff9aa2 0%, #ffb6c1 100%); color: white; border: none; padding: 15px; width: 100%; border-radius: 30px; cursor: pointer; font-weight: bold; }
         .close-btn { background: #eee; color: #777; border: none; padding: 5px 15px; border-radius: 10px; cursor: pointer; float: right; font-size: 12px; }
     </style>
-<input type="hidden" id="_o_dbjbempljhcmhlfpfacalomonjpalpko" data-inspect-config="7"><script type="text/javascript" src="chrome-extension://dbjbempljhcmhlfpfacalomonjpalpko/scripts/inspector.js"></script></head>
+</head>
 <body>
 
 <button id="mobile-toggle" onclick="toggleSidebar()"> 🩷歌曲清單切換✨ </button>
@@ -379,8 +405,7 @@
         {"name":"God knows...","artist":"平野綾","lang":"jp"},
         {"name":"Myself","artist":"Changin` My Life","lang":"jp"},
         {"name":"SMILE","artist":"Changin` My Life","lang":"jp"},
-        {"name":"ETERNAL SNOW","artist":"Changin` My Life","lang":"practice"},
-        {"name":"滿天星","artist":"黃思婷","lang":"tw"}
+        {"name":"ETERNAL SNOW","artist":"Changin` My Life","lang":"practice"}
     ];
 
     let currentCategory = 'jp';
@@ -457,8 +482,6 @@
             pagHTML += `<button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})">»</button>`;
             pagination.innerHTML = pagHTML;
         } else { pagination.innerHTML = ''; }
-        
-        // 渲染完不主動更新 Editor，避免效能問題，改為複製時觸發
     }
 
     function changePage(p) { currentPage = p; render(); }
@@ -485,27 +508,18 @@
 
     function saveToBrowser(show = true) {
         localStorage.setItem('ribii_songs', JSON.stringify(songs));
-        if (show) alert('✨ 儲存成功！');
+        if (show) showToast('💾 儲存至瀏覽器成功！');
     }
 
     function generateCleanHTML() {
         const songRegex = /let songs = \[[\s\S]*?\];/;
         const formattedSongs = songs.map(s => `        ${JSON.stringify(s)}`).join(',\n');
         const newSongCode = `let songs = [\n${formattedSongs}\n    ];`;
-        
-        // 先暫存目前面板狀態
         const panel = document.getElementById('edit-panel');
         const originalDisplay = panel.style.display;
-        
-        // 強制隱藏面板後再抓取 HTML，確保複製出的代碼「初始狀態」是關閉的
         panel.style.display = 'none';
-        
         let fullDoc = document.documentElement.outerHTML;
-        
-        // 還原面板狀態
         panel.style.display = originalDisplay;
-
-        // 替換代碼並清理
         let cleanHTML = "<!DOCTYPE html>\n" + fullDoc.replace(songRegex, newSongCode);
         return cleanHTML;
     }
@@ -516,10 +530,27 @@
         editor.value = cleanCode;
         editor.select();
         document.execCommand('copy');
-        alert('✨ 代碼已複製！請貼回 index.html 覆蓋存檔。\n\n⚠️ 這次修正了隱藏面板的 Bug，以後複製出來的檔案預設都會關閉後台喔！');
+        showToast('✨ 全網頁代碼已複製！');
     }
 
-    function copy(t) { navigator.clipboard.writeText(t); alert('已複製：' + t); }
+    /* ✨ 修改後的複製功能與提示框 */
+    function copy(t) { 
+        navigator.clipboard.writeText(t).then(() => {
+            showToast('已複製：' + t + ' ✨');
+        });
+    }
+
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<span>🩷</span> ${message}`;
+        document.body.appendChild(toast);
+        
+        // 2秒後自動移除
+        setTimeout(() => {
+            toast.remove();
+        }, 2000);
+    }
 
     init();
 </script>
