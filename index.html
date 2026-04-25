@@ -46,6 +46,14 @@
             text-align: center;
             border-bottom: 2px solid #ffdeea;
             font-weight: bold;
+            /* 移除手機版點擊時的系統預設藍色 */
+            -webkit-tap-highlight-color: transparent;
+            transition: background 0.1s;
+        }
+
+        /* ✨ 修正：手機版按下去時變成妳指定的粉紅色 #ff80a0 */
+        #mobile-toggle:active {
+            background: #ff80a0;
         }
 
         nav { flex: 1; }
@@ -128,7 +136,6 @@
             padding: 25px; box-sizing: border-box; z-index: 1000; border-left: 2px solid #ffdeea; overflow-y: auto;
         }
 
-        /* ✨ 修正後的提示框樣式：防止換行 */
         .toast {
             position: fixed;
             top: 20px;
@@ -145,9 +152,9 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            white-space: nowrap;      /* 強制不換行 */
-            width: max-content;       /* 寬度根據文字自動撐開 */
-            max-width: 90vw;          /* 寬度不超過螢幕的 90% */
+            white-space: nowrap;
+            width: max-content;
+            max-width: 90vw;
         }
 
         @keyframes fadeInOut {
