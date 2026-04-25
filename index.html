@@ -128,7 +128,7 @@
             padding: 25px; box-sizing: border-box; z-index: 1000; border-left: 2px solid #ffdeea; overflow-y: auto;
         }
 
-        /* ✨ 新增的粉色提示框樣式 */
+        /* ✨ 修正後的提示框樣式：防止換行 */
         .toast {
             position: fixed;
             top: 20px;
@@ -145,6 +145,9 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;      /* 強制不換行 */
+            width: max-content;       /* 寬度根據文字自動撐開 */
+            max-width: 90vw;          /* 寬度不超過螢幕的 90% */
         }
 
         @keyframes fadeInOut {
@@ -533,7 +536,6 @@
         showToast('✨ 全網頁代碼已複製！');
     }
 
-    /* ✨ 修改後的複製功能與提示框 */
     function copy(t) { 
         navigator.clipboard.writeText(t).then(() => {
             showToast('已複製：' + t + ' ✨');
@@ -546,7 +548,6 @@
         toast.innerHTML = `<span>🩷</span> ${message}`;
         document.body.appendChild(toast);
         
-        // 2秒後自動移除
         setTimeout(() => {
             toast.remove();
         }, 2000);
